@@ -3,22 +3,25 @@ services:
   appuser1:
     build: ./app
     depends_on:
-      - dbmongo
+      - mongodb
     ports:
       - 5000:5000
     networks:
       - db
       - app
+    
   
   appuser2:
     build: ./app
     depends_on:
-      - dbmongo
+      - mongodb
     ports:
       - 5001:5000
     networks:
       - db
       - app
+    
+
     
     
   nginx-production:
@@ -34,7 +37,7 @@ services:
       - app
 
 
-  dbmongo:
+  mongodb:
     image: mongo:5.0 
 
     environment:
@@ -49,6 +52,7 @@ services:
       - ./mongo-entrypoint:/docker-entrypoint-initdb.d
     networks:
       - db
+    
 volumes:
   db1:
 
