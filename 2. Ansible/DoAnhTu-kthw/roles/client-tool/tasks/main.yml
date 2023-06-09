@@ -1,0 +1,37 @@
+---
+# tasks file for roles/client-tool
+
+- name: Install cfssl and cfssl json
+  ansible.builtin.command: wget -q --show-progress --https-only --timestamping https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+  args:
+    chdir: /home/vm1
+
+- name: Set permissions for cfssl and cfssljson binaries
+  ansible.builtin.command: chmod +x /home/vm1/cfssl_linux-amd64 /home/vm1/cfssljson_linux-amd64
+  args:
+    chdir: /home/vm1
+
+- name: Move cfssl binaries to /usr/local/bin
+  ansible.builtin.command: sudo mv /home/vm1/cfssl_linux-amd64 /usr/local/bin/cfssl
+  args:
+    chdir: /home/vm1
+
+- name: Move cfssljson binaries to /usr/local/bin
+  ansible.builtin.command: sudo mv cfssljson_linux-amd64 /usr/local/bin/cfssljson
+  args:
+    chdir: /home/vm1
+
+- name: Install kubectl
+  ansible.builtin.command: wget https://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubectl
+  args:
+    chdir: /home/vm1
+
+- name: change permission kubectl bin foler
+  ansible.builtin.command: chmod +x kubectl
+  args:
+    chdir: /home/vm1
+
+- name: move kubectl to /usr/local/bin/
+  ansible.builtin.command: sudo mv kubectl /usr/local/bin
+  args:
+    chdir: /home/vm1
