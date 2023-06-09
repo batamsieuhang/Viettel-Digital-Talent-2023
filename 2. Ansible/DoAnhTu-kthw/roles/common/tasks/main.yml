@@ -1,0 +1,10 @@
+---
+# tasks file for common
+- name: updating apt packages
+  apt:
+    name: "*"
+    state: latest
+    update_cache: true
+
+- name: Set a hostname
+  command: hostnamectl set-hostname {{ inventory_hostname }}
