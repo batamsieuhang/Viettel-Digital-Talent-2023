@@ -1,0 +1,39 @@
+
+[localhost]
+localhost1 ansible_host=192.168.60.132
+localhost1 ansible_ssh_pass=2288
+localhost1 ansible_user=vm1
+localhost1 ansible_sudo_pass=2288
+
+
+[controller_node]
+controller ansible_host=3.210.200.96
+controller ansible_ssh_pass=vdt2023
+controller ansible_user=cloud_user
+controller ansible_sudo_pass=vdt2023
+
+controller1 ansible_host=44.198.165.8
+controller1 ansible_ssh_pass=vdt2023
+controller1 ansible_user=cloud_user
+controller1 ansible_sudo_pass=vdt2023
+
+
+
+[worker_node]
+worker ansible_host=3.231.151.55
+worker ansible_ssh_pass=vdt2023
+worker ansible_user=cloud_user
+worker ansible_sudo_pass=vdt2023
+
+worker1 ansible_host=44.201.34.218
+worker1 ansible_ssh_pass=vdt2023
+worker1 ansible_user=cloud_user
+worker1 ansible_sudo_pass=vdt2023
+
+
+[nginx_lb]
+
+nginx ansible_host=3.236.202.94
+nginx ansible_ssh_pass=vdt2023
+nginx ansible_user=cloud_user
+nginx ansible_sudo_pass=vdt2023
