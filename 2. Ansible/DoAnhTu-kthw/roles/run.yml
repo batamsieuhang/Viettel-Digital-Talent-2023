@@ -5,3 +5,10 @@
   gather_facts: true
   roles:
     - common
+
+- name: install client tool
+  hosts: localhost
+  become: true
+  gather_facts: true
+  roles:
+    - client-tool
