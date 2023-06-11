@@ -1,0 +1,9 @@
+---
+# vars file for roles/certificate-authority
+
+worker0_host: 67c4ff09553c.mylabserver.com
+worker0_ip: 172.31.25.157
+worker1_host: 67c4ff09554c.mylabserver.com
+worker1_ip: 172.31.29.48
+cert_hostname: 10.32.0.1,172.31.19.146,67c4ff09551c.mylabserver.com,172.31.30.141,67c4ff09552c.mylabserver.com,172.31.20.221,67c4ff09555c.mylabserver.com,127.0.0.1,localhost,kubernetes.default
+home_ca_folder: /home/vm1/kthw
