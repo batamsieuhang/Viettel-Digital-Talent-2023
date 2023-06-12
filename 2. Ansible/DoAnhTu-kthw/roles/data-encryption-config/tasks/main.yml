@@ -1,0 +1,19 @@
+---
+# tasks file for roles/data-encryption-config
+- name: Generate the Kubernetes Data encrpytion config file
+  ansible.builtin.shell: |
+    cat > encryption-config.yaml << EOF
+    kind: EncryptionConfig
+    apiVersion: v1
+    resources:
+      - resources:
+          - secrets
+        providers:
+          - aescbc:
+              keys:
+                - name: key1
+                  secret: {{ENCRYPTION_KEY}}
+          - identity: {}
+    EOF
+  args:
+    chdir: /home/vm1/kthw
