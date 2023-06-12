@@ -21,3 +21,32 @@
     - certificate-authority
     - kube-config
     - data-encryption-config
+
+- name: transfer config file to controller node
+  hosts: controller_node
+  become: true
+  gather_facts: true
+  roles:
+    - distribute-CA-config
+
+- name: distribute CA config to worker0
+  hosts: worker
+  become: true
+  gather_facts: true
+  tasks:
+    - name: transfer CA config, kube config
+      include_tasks:  distribute-CA-config/tasks/worker-CA.yml
+      vars:
+        - home_ca_folder: /home/vm1/kthw
+        - host_name: 67c4ff09553c.mylabserver.com
+
+- name: distribute CA config to worker1
+  hosts: worker1
+  become: true
+  gather_facts: true
+  tasks:
+    - name: transfer CA config, kube config
+      include_tasks:  distribute-CA-config/tasks/worker-CA.yml
+      vars:
+        - home_ca_folder: /home/vm1/kthw
+        - host_name: 67c4ff09554c.mylabserver.com
