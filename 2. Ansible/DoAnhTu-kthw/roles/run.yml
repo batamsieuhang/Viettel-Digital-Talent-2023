@@ -12,3 +12,12 @@
   gather_facts: true
   roles:
     - client-tool
+
+- name: generate CA, key and data encryption file
+  hosts: localhost
+  become: true
+  gather_facts: true
+  roles:
+    - certificate-authority
+    - kube-config
+    - data-encryption-config
