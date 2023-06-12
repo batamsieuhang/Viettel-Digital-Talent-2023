@@ -1,0 +1,15 @@
+---
+# tasks file for roles/distribute-CA
+- name: Copy file to worker node
+  copy:
+    src: '{{item}}'
+    dest: '/home/cloud_user'
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - "{{home_ca_folder}}/ca.pem"
+    - "{{home_ca_folder}}/{{host_name}}.pem"
+    - "{{home_ca_folder}}/{{host_name}}-key.pem"
+    - "{{home_ca_folder}}/{{host_name}}.kubeconfig"
+    - "{{home_ca_folder}}/kube-proxy.kubeconfig"

@@ -1,0 +1,21 @@
+---
+# tasks file for roles/distribute-CA
+- name: Copy CA files to controller
+  copy:
+    src: '{{item}}'
+    dest: '/home/cloud_user'
+    owner: root
+    group: root
+    mode: 0644
+  loop:
+    - "{{home_ca_folder}}/ca.pem"
+    - "{{home_ca_folder}}/ca-key.pem"
+    - "{{home_ca_folder}}/kubernetes.pem"
+    - "{{home_ca_folder}}/kubernetes-key.pem"
+    - "{{home_ca_folder}}/service-account.pem"
+    - "{{home_ca_folder}}/service-account-key.pem"
+    - "{{home_ca_folder}}/admin.kubeconfig"
+    - "{{home_ca_folder}}/kube-controller-manager.kubeconfig"
+    - "{{home_ca_folder}}/kube-scheduler.kubeconfig"
+    - "{{home_ca_folder}}/encryption-config.yaml"
+    
