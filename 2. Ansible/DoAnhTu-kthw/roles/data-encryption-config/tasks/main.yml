@@ -17,3 +17,8 @@
     EOF
   args:
     chdir: /home/vm1/kthw
+
+- name: change permission all of file in folder kthw
+  ansible.builtin.shell: chmod 644 *
+  args:
+    chdir: /home/vm1/kthw
