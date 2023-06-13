@@ -6,5 +6,3 @@
     state: latest
     update_cache: true
 
-- name: Set a hostname
-  command: hostnamectl set-hostname {{ inventory_hostname }}
