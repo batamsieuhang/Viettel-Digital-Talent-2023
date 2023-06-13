@@ -126,3 +126,11 @@
   tasks:
     - name: enable service
       include_tasks:  kubernetes-controllers/tasks/setup-RBAC.yml
+
+
+- name: config loadbalancer
+  hosts: nginx_lb
+  become: true
+  gather_facts: true 
+  roles:
+    - nginx-loadbalancer
