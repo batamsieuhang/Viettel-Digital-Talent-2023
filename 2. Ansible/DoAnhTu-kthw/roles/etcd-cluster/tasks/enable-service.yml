@@ -6,25 +6,3 @@
 
     systemctl start etcd
   
-- name: check status etcd
-  ansible.builtin.shell: |
-    systemctl status etcd
-  
-  register: status
-
-- name: debug status
-  debug:
-    msg: "etcd: {{status}}"
-
-- name: check etcd nodes
-  ansible.builtin.shell: |
-    ETCDCTL_API=3 etcdctl member list \
-    --endpoints=https://127.0.0.1:2379 \
-    --cacert=/etc/etcd/ca.pem \
-    --cert=/etc/etcd/kubernetes.pem \
-    --key=/etc/etcd/kubernetes-key.pem
-  register: status_node
-
-- name: debug status
-  debug:
-    msg: "etcd_nodes: {{status_node}}"
