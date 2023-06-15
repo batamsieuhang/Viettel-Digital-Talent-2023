@@ -60,8 +60,8 @@
     - role: etcd-cluster
       vars: 
         ETCD_NAME: 67c4ff09551c.mylabserver.com
-        INTERNAL_IP: 172.31.108.182
-        INITIAL_CLUSTER: 67c4ff09551c.mylabserver.com=https://172.31.108.182:2380,67c4ff09552c.mylabserver.com=https://172.31.96.172:2380
+        INTERNAL_IP: 172.31.100.118
+        INITIAL_CLUSTER: 67c4ff09551c.mylabserver.com=https://172.31.100.118:2380,67c4ff09552c.mylabserver.com=https://172.31.111.247:2380
 
 - name: install etcd-cluster
   hosts: controller1
@@ -71,8 +71,8 @@
     - role: etcd-cluster
       vars: 
         ETCD_NAME: 67c4ff09552c.mylabserver.com
-        INTERNAL_IP: 172.31.96.172
-        INITIAL_CLUSTER: 67c4ff09551c.mylabserver.com=https://172.31.108.182:2380,67c4ff09552c.mylabserver.com=https://172.31.96.172:2380
+        INTERNAL_IP: 172.31.111.247
+        INITIAL_CLUSTER: 67c4ff09551c.mylabserver.com=https://172.31.100.118:2380,67c4ff09552c.mylabserver.com=https://172.31.111.247:2380
 
 - name: enable etcd service
   hosts: controller_node
@@ -90,7 +90,7 @@
   roles:
     - role: kubernetes-controllers
       vars: 
-        INTERNAL_IP: 172.31.96.172
+        INTERNAL_IP: 172.31.111.247
 
 - name: install kube-control-plane0
   hosts: controller
@@ -99,7 +99,7 @@
   roles:
     - role: kubernetes-controllers
       vars: 
-        INTERNAL_IP: 172.31.108.182
+        INTERNAL_IP: 172.31.100.118
 
 - name: enable kube control plane service
   hosts: controller_node
@@ -144,7 +144,7 @@
   roles:
     - role: kubernetes-worker
       vars: 
-        POD_CIDR: 172.31.107.240/20
+        POD_CIDR: 172.31.107.30/20
         HOSTNAME: 67c4ff09553c.mylabserver.com
 
 
@@ -155,7 +155,7 @@
   roles:
     - role: kubernetes-worker
       vars: 
-        POD_CIDR: 172.31.107.166/20
+        POD_CIDR: 172.31.97.112/20
         HOSTNAME: 67c4ff09554c.mylabserver.com
 
 - name: start services kubernetes worker
@@ -165,3 +165,6 @@
   tasks:
     - name: enable service
       include_tasks:  kubernetes-worker/tasks/enable-services.yml
+
+
+

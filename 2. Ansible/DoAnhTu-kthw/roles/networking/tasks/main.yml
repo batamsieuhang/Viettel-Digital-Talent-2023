@@ -1,0 +1,9 @@
+---
+# tasks file for roles/networking
+- name: enable IP forwarding in worker-nodes
+  ansible.builtin.shell: |
+    sysctl net.ipv4.conf.all.forwarding=1
+
+    echo "net.ipv4.conf.all.forwarding=1" | sudo tee -a /etc/sysctl.conf
+
+
